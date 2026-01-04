@@ -1,17 +1,67 @@
+/* =========================================================
+   0) QUICK EDIT CHEAT SHEET (safe beginner edits)
+   =========================================================
+   Want bigger logo/name in top-left?
+     -> .brand-name { font-size: ...; }
+
+   Want bigger section headings (Work/Services/Proof/Contact)?
+     -> .section h2 { font-size: ...; }
+
+   Want bigger main hero headline (I help teams ship...)?
+     -> h1 { font-size: ...; line-height: ...; }
+
+   Want change normal paragraph text size?
+     -> body { font-size: ...; }   (add this line)
+
+   Want change muted/grey text colour?
+     -> --muted in :root
+
+   Want more space between sections?
+     -> .section { padding: ...; }
+
+   Want change button style?
+     -> .btn and .btn.primary
+   ========================================================= */
+
+
+/* =========================================================
+   1) SITE THEME SETTINGS (colours, sizes, reusable values)
+   ========================================================= */
 :root {
+  /* Background + main text */
   --bg: #ffffff;
   --text: #0b1220;
+
+  /* Softer text colour (used for descriptions + small text) */
   --muted: #536075;
+
+  /* Borders around cards/sections */
   --border: #e9eef5;
+
+  /* Card background */
   --card: #ffffff;
+
+  /* Shadow used on cards */
   --shadow: 0 18px 50px rgba(11, 18, 32, 0.08);
+
+  /* Rounded corners */
   --radius: 18px;
+
+  /* Max page width before it stops growing */
   --max: 1100px;
 }
 
+
+/* =========================================================
+   2) GLOBAL DEFAULTS (applies to everything)
+   ========================================================= */
+
+/* Makes padding/borders not break layouts */
 * {
   box-sizing: border-box;
 }
+
+/* Removes default spacing + applies site colours */
 html,
 body {
   margin: 0;
@@ -19,34 +69,59 @@ body {
   background: var(--bg);
   color: var(--text);
 }
+
+/* Main font + readability */
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.6;
+
+  /* OPTIONAL: add this if you want bigger base text everywhere */
+  /* font-size: 16px; */
 }
 
+/* Link behaviour (no underline, inherits colour) */
 a {
   color: inherit;
   text-decoration: none;
 }
+
+/* Link hover effect */
 a:hover {
   opacity: 0.82;
 }
 
+
+/* =========================================================
+   3) PAGE LAYOUT CONTAINER (controls page width + padding)
+   ========================================================= */
 .container {
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 24px;
 }
 
-/* Topbar */
+/* This gives the main page content top/bottom padding */
+main.container {
+  padding: 34px 0 70px;
+}
+
+
+/* =========================================================
+   4) TOP NAV BAR (sticky header, brand name, menu links)
+   ========================================================= */
 .topbar {
   position: sticky;
   top: 0;
+
+  /* slightly see-through so it looks modern while scrolling */
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
+
   border-bottom: 1px solid var(--border);
   z-index: 10;
 }
+
+/* Arranges logo on left + nav on right */
 .topbar-inner {
   display: flex;
   align-items: center;
@@ -55,31 +130,45 @@ a:hover {
   padding: 16px 0;
 }
 
+/* Brand area (top-left name + subtitle) */
 .brand {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
+
+/* ✅ TOP-LEFT NAME (edit size here to make it bigger) */
 .brand-name {
+  font-size: 32px;
   font-weight: 900;
   letter-spacing: -0.3px;
+
+  /* ADD THIS LINE to increase size */
+  /* font-size: 18px; */
 }
+
+/* Top-left subtitle (PM • BA • QA...) */
 .brand-sub {
   font-size: 13px;
   color: var(--muted);
   font-weight: 700;
 }
 
+/* Navigation links */
 .nav {
   display: flex;
   gap: 20px;
   align-items: center;
   flex-wrap: wrap;
 }
+
+/* Normal nav links */
 .nav a {
   font-weight: 700;
   color: var(--muted);
 }
+
+/* The Contact pill button in the nav */
 .nav a.nav-cta {
   color: var(--text);
   padding: 10px 14px;
@@ -88,20 +177,19 @@ a:hover {
   background: #fff;
 }
 
-/* Page padding */
-main.container {
-  padding: 34px 0 70px;
-}
 
-/* Hero */
+/* =========================================================
+   5) HERO SECTION (the top area: big text + headshot)
+   ========================================================= */
 .hero {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.15fr 1fr; /* left text wider than right photo */
   gap: 34px;
   align-items: start;
   padding: 26px 0 18px;
 }
 
+/* The small rounded “Open to roles…” pill */
 .pill {
   display: inline-block;
   border: 1px solid var(--border);
@@ -112,12 +200,15 @@ main.container {
   background: #fff;
 }
 
+/* ✅ MAIN HERO HEADING (big headline: I help teams ship...) */
 h1 {
   font-size: 54px;
   line-height: 1.05;
   letter-spacing: -1px;
   margin: 18px 0 14px;
 }
+
+/* Hero paragraph under the heading */
 .lead {
   font-size: 18px;
   color: var(--muted);
@@ -125,12 +216,15 @@ h1 {
   margin: 0 0 18px;
 }
 
+/* Buttons under hero */
 .hero-actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   margin: 18px 0 8px;
 }
+
+/* All buttons (default style) */
 .btn {
   display: inline-block;
   padding: 12px 16px;
@@ -139,19 +233,25 @@ h1 {
   background: #fff;
   font-weight: 800;
 }
+
+/* Primary button (dark one) */
 .btn.primary {
   background: var(--text);
   color: #fff;
   border-color: var(--text);
 }
 
+/* Tiny tip under buttons */
 .tip {
   font-size: 12px;
   color: var(--muted);
   margin-top: 10px;
 }
 
-/* Snapshot card */
+
+/* =========================================================
+   6) “QUICK SNAPSHOT” CARD (box with strengths/sectors/tools)
+   ========================================================= */
 .card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -159,12 +259,15 @@ h1 {
   box-shadow: var(--shadow);
   padding: 18px;
 }
+
+/* Title inside the card (“Quick snapshot”) */
 .card-title {
   font-weight: 900;
   font-size: 18px;
   margin-bottom: 12px;
 }
 
+/* KEY/VALUE ROW LAYOUT (Strengths, Sectors, Tools) */
 .kv-grid {
   display: grid;
   grid-template-columns: 120px 1fr;
@@ -172,6 +275,8 @@ h1 {
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border);
 }
+
+/* Left column labels (Strengths, Sectors, Tools) */
 .label {
   font-size: 12px;
   color: var(--muted);
@@ -179,17 +284,22 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.6px;
 }
+
+/* Right column values */
 .value {
   font-size: 14px;
   font-weight: 650;
 }
 
+/* Chips row under the snapshot card */
 .chips {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   padding-top: 14px;
 }
+
+/* Each chip pill */
 .chips span {
   font-size: 12px;
   padding: 7px 10px;
@@ -200,14 +310,12 @@ h1 {
   font-weight: 800;
 }
 
-/* Photos */
-.photo-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-top: 14px;
-}
 
+/* =========================================================
+   7) IMAGES (hero headshot + proof photos)
+   ========================================================= */
+
+/* Generic photo style used everywhere */
 .photo {
   width: 100%;
   height: 100%;
@@ -216,22 +324,44 @@ h1 {
   border: 1px solid var(--border);
   box-shadow: 0 10px 24px rgba(11, 18, 32, 0.06);
 }
+
+/* Headshot base minimum height */
 .headshot {
   min-height: 270px;
 }
-.photo-stack {
-  display: grid;
-  gap: 14px;
-}
-.photo-stack .photo {
-  min-height: 128px;
+
+/* Hero headshot sizing (right column) */
+.hero-right .headshot {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
 }
 
-/* Sections */
+/* (Not currently used in your HTML — safe to remove if you want) */
+.hero-photo .headshot {
+  min-height: 320px;
+  width: 100%;
+}
+
+/* Proof images layout (two images side-by-side) */
+.proof-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+
+/* =========================================================
+   8) SECTIONS (Work / Services / Proof / Contact)
+   ========================================================= */
 .section {
-  padding: 46px 0;
+  padding: 46px 0;                /* space top/bottom */
   border-top: 1px solid var(--border);
 }
+
+/* Grey background section style (Services + Contact) */
 .section.alt {
   background: #f7f9fc;
   border-radius: var(--radius);
@@ -239,23 +369,32 @@ h1 {
   border: 1px solid var(--border);
   margin-top: 18px;
 }
+
+/* ✅ SECTION HEADINGS (Work/Services/Proof/Contact) */
 .section h2 {
   font-size: 28px;
   margin: 0 0 10px;
   letter-spacing: -0.3px;
 }
+
+/* Muted paragraph text below headings */
 .muted {
   color: var(--muted);
   margin: 0;
 }
 
-/* Tiles (Work + Proof) */
+
+/* =========================================================
+   9) TILES (Work tiles + Proof tiles)
+   ========================================================= */
 .tiles {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin-top: 18px;
 }
+
+/* Each tile card */
 .tile {
   border: 1px solid var(--border);
   background: #fff;
@@ -263,31 +402,44 @@ h1 {
   padding: 16px;
   box-shadow: 0 10px 24px rgba(11, 18, 32, 0.05);
 }
+
+/* Tile heading */
 .tile h3 {
   margin: 0 0 8px;
   font-size: 16px;
 }
+
+/* Tile description */
 .tile p {
   margin: 0;
   color: var(--muted);
 }
 
-/* Two columns (Services) */
+
+/* =========================================================
+   10) TWO-COLUMN PANELS (Services section)
+   ========================================================= */
 .two-col {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   margin-top: 18px;
 }
+
+/* White panel cards */
 .panel {
   border: 1px solid var(--border);
   background: #fff;
   border-radius: var(--radius);
   padding: 16px;
 }
+
+/* Panel headings */
 .panel h3 {
   margin: 0 0 8px;
 }
+
+/* Panel list styling */
 .panel ul {
   margin: 0;
   padding-left: 18px;
@@ -297,7 +449,10 @@ h1 {
   margin: 8px 0;
 }
 
-/* Contact */
+
+/* =========================================================
+   11) CONTACT BOX (email + linkedin + button)
+   ========================================================= */
 .contact-box {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
@@ -309,22 +464,31 @@ h1 {
   padding: 16px;
   margin-top: 18px;
 }
+
+/* Big clickable links (email + linkedin) */
 .link {
   font-weight: 900;
   display: inline-block;
   margin-top: 4px;
 }
+
+/* Small helper text under the links */
 .hint {
   color: var(--muted);
   font-size: 12px;
   margin-top: 6px;
 }
+
+/* Right-side button alignment */
 .contact-cta {
   display: flex;
   justify-content: flex-end;
 }
 
-/* Footer */
+
+/* =========================================================
+   12) FOOTER
+   ========================================================= */
 .footer {
   border-top: 1px solid var(--border);
   margin-top: 34px;
@@ -334,55 +498,71 @@ h1 {
   font-size: 14px;
 }
 
-/* Responsive */
+
+/* =========================================================
+   13) RESPONSIVE (mobile/tablet adjustments)
+   ========================================================= */
 @media (max-width: 980px) {
+  /* Make hero heading smaller on mobile */
   h1 {
     font-size: 42px;
   }
+
+  /* Stack hero columns (text above image) */
   .hero {
     grid-template-columns: 1fr;
   }
+
   .headshot {
     min-height: 240px;
   }
+
+  /* Make tiles one column */
   .tiles {
     grid-template-columns: 1fr;
   }
+
+  /* Stack service panels */
   .two-col {
     grid-template-columns: 1fr;
   }
+
+  /* Contact becomes vertical */
   .contact-box {
     grid-template-columns: 1fr;
   }
+
   .section.alt {
     padding: 22px;
   }
+
   .contact-cta {
     justify-content: flex-start;
   }
 }
 
-.hero-right .headshot {
-  width: 100%;
-  height: 100%;
-  min-height: 360px;
-  object-fit: cover;
-}
-
-.hero-photo .headshot {
-  min-height: 320px;
-  width: 100%;
-}
-
-.proof-photos {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 18px;
-}
-
+/* Proof images stack on small screens */
 @media (max-width: 920px) {
   .proof-photos {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* =========================================================
+   14) CLEANUP NOTES (optional)
+   =========================================================
+
+.photo-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+.photo-stack {
+  display: grid;
+  gap: 14px;
+}
+.photo-stack .photo {
+  min-height: 128px;
 }
