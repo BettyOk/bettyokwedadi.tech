@@ -124,7 +124,7 @@ main.container {
 /* Arranges logo on left + nav on right */
 .topbar-inner {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
   padding: 16px 0;
@@ -158,7 +158,7 @@ main.container {
 .nav {
   display: flex;
   gap: 20px;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
 }
 
