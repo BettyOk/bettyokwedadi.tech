@@ -124,17 +124,18 @@ main.container {
 /* Arranges logo on left + nav on right */
 .topbar-inner {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
   padding: 16px 0;
 }
 
-/* Brand area (top-left name + subtitle) */
 .brand {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+}
+
+.nav {
+  align-self: flex-end; /* 👈 anchors nav to bottom of the header area */
 }
 
 /* ✅ TOP-LEFT NAME (edit size here to make it bigger) */
