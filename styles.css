@@ -157,8 +157,8 @@ main.container {
 /* Navigation links */
 .nav {
   display: flex;
-  gap: 25px;
-  align-items: center;
+  gap: 20px;
+  align-items: baseline;
   flex-wrap: wrap;
 }
 
