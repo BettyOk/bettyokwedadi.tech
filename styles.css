@@ -122,44 +122,39 @@ main.container {
 }
 
 /* Arranges logo on left + nav on right */
+/* --- Header layout: 2 rows (name on row1, subtitle+nav on row2) --- */
 .topbar-inner {
   display: grid;
-  grid-template-columns: 1fr auto;   /* left = brand, right = nav */
-  grid-template-rows: auto auto;     /* row1 = name, row2 = subtitle/nav */
-  column-gap: 16px;
-  row-gap: 2px;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 24px;
+  row-gap: 6px;
   padding: 16px 0;
-  align-items: start;
+  align-items: end;
 }
 
-/* keep brand stacked */
-.brand {
-  display: contents; /* lets brand-name/sub sit in the grid rows */
-}
-
+/* Put name on row 1 */
 .brand-name {
   grid-column: 1;
   grid-row: 1;
 }
 
+/* Put subtitle on row 2 */
 .brand-sub {
   grid-column: 1;
   grid-row: 2;
 }
 
-/* ✅ nav sits on the same row as brand-sub */
+/* Put nav on row 2 (same line as subtitle) */
 .nav {
   grid-column: 2;
   grid-row: 2;
   align-self: end;
 }
 
-/* Brand area (top-left name + subtitle) */
-.brand {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
+/* Optional tiny nudge if the Contact pill still looks 1–2px off */
+.nav { margin-bottom: 1px; }
+
 
 /* ✅ TOP-LEFT NAME (edit size here to make it bigger) */
 .brand-name {
